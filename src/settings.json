@@ -323,17 +323,6 @@
           "status": "ready"
         }
       ]
-    },
-    {
-      "name": "Game",
-      "items": [
-        {
-          "name": "Teka-Teki",
-          "desc": "Teka teki seru",
-          "path": "/games/tekateki",
-          "status": "ready"
-        }
-      ]
     }
   ]
 }
