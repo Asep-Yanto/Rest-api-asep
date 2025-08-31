@@ -1,32 +1,14 @@
-// src/pages/api/tekateki.js
+import fs from "fs";
 import path from "path";
-import { promises as fs } from "fs";
 
-export default async function handler(req, res) {
-  try {
-    // Lokasi file tekateki.json
-    const filePath = path.join(process.cwd(), "src", "json", "tekateki.json");
+export default function handler(req, res) {
+  const filePath = path.join(process.cwd(), "src/json/tekateki.json");
+  const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
-    // Baca file
-    const fileContent = await fs.readFile(filePath, "utf8");
+  // ambil 1 soal random
+  const randomIndex = Math.floor(Math.random() * data.length);
+  const randomSoal = data[randomIndex];
 
-    // Parse JSON
-    const data = JSON.parse(fileContent);
-
-    // Kirim response
-    res.status(200).json({
-      success: true,
-      message: "Berhasil ambil data tekateki",
-      data,
-    });
-  } catch (err) {
-    // Kalau error, tampilkan detail di log
-    console.error("API Error:", err.message);
-
-    res.status(500).json({
-      success: false,
-      error: "Internal Server Error",
-      details: err.message,
-    });
-  }
-    }
+  // kirim langsung soal + jawaban
+  res.status(200).json(randomSoal);
+}
