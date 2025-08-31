@@ -3,7 +3,7 @@ const os = require('os');
 module.exports = function (app) {
     const startTime = Date.now();
     let totalRequest = 0;
-    const domain = 'admingtgdanz.biz.id';
+    const domain = 'rest-api.mywebhost.biz.id';
 
     function formatRuntime(ms) {
         const seconds = Math.floor(ms / 1000);
@@ -27,7 +27,7 @@ module.exports = function (app) {
 
         res.json({
             status: true,
-            creator: "Hookrest-Team",
+            creator: "Asep-Team",
             result: {
                 status: "Aktif",
                 totalrequest: totalRequest.toString(),
